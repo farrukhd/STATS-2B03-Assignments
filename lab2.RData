@@ -1,0 +1,92 @@
+if(!require("base")){
+  install.packages("base")
+  library("base")
+}
+
+if(!require("stats")){
+  install.packages("stats")
+  library("stats")
+}
+
+if(!require("graphics")){
+  install.packages("graphics")
+  library("graphics")
+}
+
+if(!require("aplpack")){
+  install.packages("aplpack")
+  library("aplpack")
+}
+
+if(!require("nortest")){
+  install.packages("nortest")
+  library("nortest")
+}
+
+databank <- read.table("C:\\Users\\zmmaz\\OneDrive\\Desktop\\STATS 2B03\\farrukhd_class.txt", sep = ",", header = TRUE, na.strings = c("", "NA"))
+databank
+
+# 1a
+study <- databank$study
+programme <- databank$programme
+bplot<-boxplot(study~programme,data=databank,main=
+                 "Boxplot of STUDY TIME by programme",
+               xlab="programme",ylab="STUDY TIME",col="lightslateblue")
+stats<-bplot$stats
+rownames(stats)<-c("a2","Q1","Q2","Q3","a1")
+colnames(stats)<-bplot$names
+Q1_ls <- stats["Q1", "ls"]
+Q1_ls
+
+# 1b
+Q1_bio <- stats["Q1", "bio"]
+Q3_bio <- stats["Q3", "bio"]
+c(Q1_bio, Q3_bio)
+
+# 1c
+study_clean <- na.omit(study)
+min_study <- min(study_clean)
+max_study <- max(study_clean)
+c(min_study, max_study)
+
+# 1d
+kin_study <- study[programme == "kin"]
+mean_kin <- mean(kin_study, na.rm = TRUE)
+mean_kin
+
+# 1e
+mean_all <- mean(study_clean)
+mean_all
+
+# 4a
+handedness<-databank$handedness
+gender<-databank$gender
+cross<-table(gender,handedness)
+All<-rowSums(cross)
+cross<-cbind(cross,All)
+All<-colSums(cross)
+cross<-rbind(cross,All)
+cross_raw <- table(gender, handedness)
+total <- sum(cross_raw)
+cross
+
+# 4b
+P_right_female <- cross_raw["1", "R"] / total
+P_right_female
+
+# 4c
+P_left <- sum(cross_raw[ , "L"]) / total
+P_male <- sum(cross_raw["2", ]) / total
+P_left_and_male <- cross_raw["2", "L"] / total
+P_left_or_male <- P_left + P_male - P_left_and_male
+P_left_or_male
+
+# 4d
+P_left_given_female <- cross_raw["1", "L"] / sum(cross_raw["1", ])
+P_left_given_female
+
+# 4e
+P_left_given_male <- cross_raw["2", "L"] / sum(cross_raw["2", ])
+P_left_given_male
+
+

@@ -1,0 +1,26 @@
+if(!require("base")){
+  install.packages("base")
+  library("base")
+}
+
+if(!require("stats")){
+  install.packages("stats")
+  library("stats")
+}
+
+if(!require("graphics")){
+  install.packages("graphics")
+  library("graphics")
+}
+
+if(!require("aplpack")){
+  install.packages("aplpack")
+  library("aplpack")
+}
+
+if(!require("nortest")){
+  install.packages("nortest")
+  library("nortest")
+}
+
+databank <- read.table("C:\\Users\\zmmaz\\OneDrive\\Desktop\\STATS 2B03\\farrukhd_class.txt", sep = ",", header = TRUE, na.strings = c("", "NA"))

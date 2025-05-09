@@ -1,0 +1,83 @@
+if(!require("base")){
+  install.packages("base")
+  library("base")
+}
+
+if(!require("stats")){
+  install.packages("stats")
+  library("stats")
+}
+
+if(!require("graphics")){
+  install.packages("graphics")
+  library("graphics")
+}
+
+if(!require("aplpack")){
+  install.packages("aplpack")
+  library("aplpack")
+}
+
+if(!require("nortest")){
+  install.packages("nortest")
+  library("nortest")
+}
+
+databank <- read.table("C:\\Users\\zmmaz\\OneDrive\\Desktop\\STATS 2B03\\farrukhd_class.txt", sep = ",", header = TRUE, na.strings = c("", "NA"))
+
+
+# 3a
+height <- databank$height
+height <- height[!is.na(height)]
+group=cut(height,breaks=c(0,61,64,67,70,73),right=FALSE)
+count <- table(group)
+n<-length(height)
+percent<-count/n*100
+cumpct <- cumsum(percent)
+cumpct
+
+
+# 3b
+cbind(count,percent,cumpct)
+
+
+# 4a
+study <- databank$study
+gender <- databank$gender
+
+female_study<-study[gender=="1"]
+male_study<-study[gender=="2"]
+
+cutpoints<-c(0,1,2,3,4,5,6,7,8,9,10)
+
+hist(female_study,breaks=cutpoints,labels=TRUE,right=FALSE,col="green",
+     xaxt="n",main="Studying for Females",xlab="Time spent Studying")
+axis(side=1,at=cutpoints)
+
+hist(male_study,breaks=cutpoints,labels=TRUE,right=FALSE,col="red",
+     xaxt="n",main="Studying for Males",xlab="Time spent Studying")
+axis(side=1,at=cutpoints)
+
+
+# 4b
+female_study <- female_study[!is.na(female_study)]
+count_at_least_2 <- sum(female_study >= 2)
+total_females <- length(female_study)
+percentage_at_least_2 <- (count_at_least_2 / total_females) * 100
+percentage_at_least_2
+
+
+# 5a
+cell <- databank$cell
+cell_hr <- cell/60
+library("aplpack")
+stem.leaf(cell_hr,na.rm=TRUE,trim.outliers=FALSE)
+
+cell_hr <- cell / 60
+cell_hr <- cell_hr[!is.na(cell_hr)]
+at_least_2 <- sum(cell_hr >= 2)
+at_least_2
+
+# 5b
+between_1_and_2 <- sum(cell_hr >= 1 & cell_hr < 2)
+between_1_and_2

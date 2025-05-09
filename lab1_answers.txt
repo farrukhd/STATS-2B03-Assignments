@@ -1,0 +1,72 @@
+#1A
+(C) The output should be copied and pasted directly from R
+into the answer box, without doing any rounding.
+
+#1B
+(C) The output can be copied and pasted directly from R
+into the answer box, without doing any rounding.
+Or the answer could be rounded to the given number
+of decimals. Either way is okay in that case.
+
+#2A
+63.37
+
+#2B
+1.23
+
+#2C
+4013.62
+
+#3A
+3.296703,25.549451,55.219780,77.747253,93.131868,100
+
+#3B
+44.78
+
+#4A
+0,10,30,30,20,19,11,5
+
+#4B
+92.73
+
+#5A
+296
+
+#5B
+30
+
+#6A
+2,2,2,3,5,3
+
+#6B
+58.5
+
+#6C
+94.5
+
+#6D
+27
+
+#6E
+16.62
+
+#7A
+42,59
+
+#7B
+53
+
+#7C
+19,65
+
+#7D
+G
+
+#8
+L
+
+#9
+D
+
+#10
+G
